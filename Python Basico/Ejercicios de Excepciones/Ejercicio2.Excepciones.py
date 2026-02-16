@@ -30,4 +30,3 @@ while True:
         print("La edad debe ser un número válido")
 
 print(f"Hola {name}, tu edad es {age}")
-
