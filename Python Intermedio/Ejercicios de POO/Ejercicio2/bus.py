@@ -7,20 +7,28 @@ class Bus:
     max_passengers = 40
     passengers = []
     
-    def add_passengers(self, person):
+    class Person():
+        def __init__(self, name):
+            self.name = name
+    
+    def add_passenger(self, person):
         actual_passengers = len(self.passengers)
         if actual_passengers >= self.max_passengers:
             print("Bus is full")
         else: 
             self.passengers.append(person)
         
-    def rest_passengers(self):
+    def rest_passenger(self):
         if len(self.passengers) > 0:
             self.passengers.pop()
         else:
             print("No passengers to remove")
 
 bus = Bus()
-bus.add_passengers("Lucia")
-bus.add_passengers("Juan")
+
+person1 = "Lucia"
+person2 = "Juan"
+
+bus.add_passenger(person1)
+bus.add_passenger(person2)
 print("Passengers: ", bus.passengers)
