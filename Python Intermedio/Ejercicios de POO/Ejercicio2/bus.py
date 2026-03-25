@@ -4,12 +4,9 @@
 #3.Un método para bajar pasajeros uno por uno (en cualquier orden).
 
 class Bus:
-    max_passengers = 40
-    passengers = []
-    
-    class Person():
-        def __init__(self, name):
-            self.name = name
+    def __init__(self, max_passengers):
+        self.passengers = []
+        self.max_passengers = max_passengers
     
     def add_passenger(self, person):
         actual_passengers = len(self.passengers)
@@ -24,11 +21,26 @@ class Bus:
         else:
             print("No passengers to remove")
 
-bus = Bus()
+class Person():
+    def __init__(self, name):
+        self.name = name
+        
+        
+bus1 = Bus(40)
+#bus2 = Bus(20)
 
-person1 = "Lucia"
-person2 = "Juan"
+person1 = Person("Lucia")
+person2 = Person("Juan")
 
-bus.add_passenger(person1)
-bus.add_passenger(person2)
-print("Passengers: ", bus.passengers)
+#person3 = Person("Maria")
+
+bus1.add_passenger(person1)
+bus1.add_passenger(person2)
+
+#bus2.add_passenger(person3)
+
+for p in bus1.passengers:
+    print(p.name)
+    
+#for x in bus2.passengers:
+    #print(x.name)
