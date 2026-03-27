@@ -2,31 +2,24 @@
 
 def numbers_only(func):
     def wrapper(*args, **kwargs):
-        for arg in args[1:]:  
+        for arg in args:
             if not isinstance(arg, (int, float)):
                 raise Exception("All parameters must be numbers")
 
-        result = func(*args, **kwargs)
-        return result
+        for value in kwargs.values():
+            if not isinstance(value, (int, float)):
+                raise Exception("All parameters must be numbers")
 
+        return func(*args, **kwargs)
     return wrapper
 
-class Store():
-    
-    def __init__(self, product, price):
-        self.product = product
-        self.price = price
-    
-    @numbers_only    
-    def calculate_discount(self, price):
-        if price <= 100:
-            discount = 10
-            total = price - 10 
-        else:
-            discount = 40
-            total = price - 40
-        return total
-    
-store1 = Store("Book", 30)
-total = store1.calculate_discount(30)
-print("The total with the discount is: ", total)
+
+@numbers_only
+def calculate_discount(price):
+    if price <= 100:
+        return price - 10
+    else:
+        return price - 40
+
+
+print("The total with the discount is:", calculate_discount(30))
